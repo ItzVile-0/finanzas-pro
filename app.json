@@ -1,0 +1,71 @@
+{
+  "expo": {
+    "name": "Finanzas Pro",
+    "slug": "finanzas-pro",
+    "owner": "camcab",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "finanzaspro",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/expo.icon"
+    },
+    "android": {
+      "package": "com.camilocabrera.finanzaspro",
+      "adaptiveIcon": {
+        "backgroundColor": "#0D0D0F",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "allowBackup": false
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0D0D0F",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 76
+        }
+      ],
+      "expo-font",
+      "expo-sqlite",
+      "expo-sharing",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/android-icon-monochrome.png",
+          "color": "#C9A24A"
+        }
+      ],
+      "./plugins/with-no-data-extraction.js",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "buildArchs": [
+              "arm64-v8a"
+            ],
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "extraProguardRules": "# Código nativo que React Native, Expo y estas librerías llaman por JNI o reflexión: R8 no debe renombrarlo ni quitarlo.\n-keep class com.facebook.react.** { *; }\n-keep class com.facebook.hermes.** { *; }\n-keep class com.facebook.jni.** { *; }\n-keep class com.facebook.soloader.** { *; }\n-keep class expo.modules.** { *; }\n-keep class com.swmansion.reanimated.** { *; }\n-keep class com.swmansion.worklets.** { *; }\n-keep class com.swmansion.gesturehandler.** { *; }\n-keep class com.swmansion.rnscreens.** { *; }\n-keep class com.horcrux.svg.** { *; }\n-keep class com.th3rdwave.safeareacontext.** { *; }\n-keepclassmembers class * { @com.facebook.react.bridge.ReactMethod *; @com.facebook.proguard.annotations.DoNotStrip *; }\n-dontwarn com.facebook.**\n-dontwarn expo.modules.**\n# expo-notifications trae Firebase Messaging aunque la app solo usa avisos locales (sin push).\n-dontwarn com.google.firebase.**"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "65aba559-584c-4909-bdb4-d1f3ab4c3c67"
+      }
+    }
+  }
+}
